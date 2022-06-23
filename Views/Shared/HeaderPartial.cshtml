@@ -1,0 +1,43 @@
+﻿<div id="header-wrapper">
+    <div class="container">
+
+        <!-- Header -->
+        <header id="header">
+            <div class="inner">
+
+                <!-- Logo -->
+                <h1><a href="/home/index" id="logo">Store</a></h1>
+
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="/catalog/index">Catalog</a></li>
+
+                        @if (User.Identity.Name is null)
+                        {
+                            <li><a href="/account/login">Log in</a></li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/profile/index">Profile</a>
+                                <ul>
+                                    <li><a href="/profile/index">My profile</a></li>
+                                    <li><a href="/profile/orders">My orders</a></li>
+                                    <li><a href="/profile/edit">Edit profile</a></li>
+                                    <li><a href="/account/logout">Log out</a></li>
+                                    <li><a href="/profile/remove">Remove Profile</a></li>
+                                </ul>
+                            </li>
+                        }
+
+                    </ul>
+                </nav>
+
+            </div>
+        </header>
+
+
+
+    </div>
+</div>

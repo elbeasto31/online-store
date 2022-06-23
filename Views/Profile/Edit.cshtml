@@ -1,0 +1,43 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Edit";
+    Func<string, string> valueOrDefualt = (string field) => field is null ? String.Empty : field.Trim();
+ }
+
+<h2 style="margin-top:10px; margin-left:30px;">Editing profile</h2>
+
+<form asp-action="Edit" asp-controller="Profile" style="margin-top:10px; margin-left:30px;">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        @Html.ValidationSummary(false, "", new { @style = "color: red" })
+        <input type="hidden" asp-for="login" />
+        <div>
+            <label asp-for="password">Password:</label><br />
+            <input type="password" asp-for="password" value="@valueOrDefualt(Model.password)" />
+            <span asp-validation-for="password" />
+        </div>
+        <div>
+            <label asp-for="user_name">Name:</label><br />
+            <input asp-for="user_name" value="@valueOrDefualt(Model.user_name)" />
+            <span asp-validation-for="user_name" />
+        </div>
+        <div>
+            <label asp-for="address">Address:</label><br />
+            <input asp-for="address" value="@valueOrDefualt(Model.address)" />
+            <span asp-validation-for="address" />
+        </div>
+        <div>
+            <label asp-for="phone">Phone:</label><br />
+            <input asp-for="phone" value="@valueOrDefualt(Model.phone)"/>
+            <span asp-validation-for="phone" />
+        </div>
+        <div>
+            <label asp-for="email">Email:</label><br />
+            <input type="email" asp-for="email" value="@valueOrDefualt(Model.email)" />
+            <span asp-validation-for="email" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+    </div>
+</form>

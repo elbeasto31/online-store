@@ -1,0 +1,16 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<font size="4">
+    <b>
+        <table style="margin-top:10px; margin-left:30px;">
+            <tr><td>Login: </td><td>@Model.login</td></tr>
+            <tr><td>Name: </td><td>@Model.user_name</td></tr>
+            <tr><td>Address: </td><td>@Model.address</td></tr>
+            <tr><td>Phone: </td><td>@Model.phone</td></tr>
+            <tr><td>Email: </td><td>@Model.email</td></tr>
+        </table>
+    </b>
+</font>

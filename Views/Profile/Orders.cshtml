@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "My Orders";
+    List<Good> goodsList = ViewBag.Goods;
+    Good good;
+}
+
+@if (Model.Count() == 0)
+{
+    <h1 style="margin-top:10px; margin-left:30px;">No orders yet</h1>
+    <a asp-action="Index" asp-controller="Catalog" style="margin-top:10px; margin-left:30px;">To the catalog</a>
+}
+else
+{
+    <h3 style="margin-top:10px; margin-left:30px;">My Orders</h3>
+    <h4>
+        <table class="table" style="margin-top:10px; margin-left:30px;">
+            <tr style="color:darkorange"><td>Name</td><td>Description</td><td>Price</td><td>Comment</td></tr>
+            <h5></h5>
+            @foreach (var item in Model)
+            {
+                good = goodsList.FirstOrDefault(x => x.good_id == item.good_id);
+                <tr><td>@good.good_name</td><td>@good.description</td><td>@good.price$</td><td>@item.comment</td><td style=" color: darkslateblue "><a href="/buy/removeorder?id=@item.order_id"><u>Remove order</u></a></td></tr>
+            }
+        </table>
+    </h4>
+}

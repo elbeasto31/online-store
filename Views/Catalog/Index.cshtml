@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Good>
+@{
+    ViewData["Title"] = "Catalog";
+
+}
+
+
+    
+
+<h3 style="margin-top:10px; margin-left:30px;">All items</h3>
+<h4>
+<table class="table" style="margin-top:10px; margin-left:30px;">
+    <tr style="color:darkorange"><td >Name</td><td >Description</td><td>Price</td></tr>
+    <h5></h5>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.good_name</td><td>@item.description</td><td>@item.price$</td> <td style=" color: darkslateblue "><a href ="/buy/order?id=@item.good_id"><u>Buy</u></a></td></tr>
+    }
+</table>
+</h4>
