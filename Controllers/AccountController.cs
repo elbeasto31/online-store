@@ -36,6 +36,8 @@ namespace AspExMVC.Controllers
             {
 
                 User user = await userRep.GetUserAsync(model.login, model.password);
+
+                //checks whether this user is registered
                 if (user != null)
                 {
                     await AuthenticateAsync(model.login);
@@ -61,9 +63,11 @@ namespace AspExMVC.Controllers
             {
                 User user = await userRep.GetUserAsync(model.login);
 
+                //checks whether this user is registered
                 if (user != null)
                     ModelState.AddModelError("Same logins", "User with this login is already registered");
 
+                //checks whether phone field contains only numbers
                 else if (!model.phone.All(char.IsDigit))
                     ModelState.AddModelError("wrong phone", "Phone must consist of numbers only");
 
@@ -96,7 +100,7 @@ namespace AspExMVC.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //Conducts authentication for the chosen user
+        //conducts authentication for the chosen user
         private async Task AuthenticateAsync(string userName)
         {
             var claims = new List<Claim> { new Claim(ClaimsIdentity.DefaultNameClaimType, userName) };

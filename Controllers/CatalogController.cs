@@ -16,6 +16,7 @@ namespace AspExMVC.Controllers
             rep = repos;
         }
 
+        //displays store's goods list
         public async Task<IActionResult> IndexAsync()
         {
             return View(await rep.GetAllGoodsAsync());

@@ -28,11 +28,15 @@ namespace AspExMVC
        
         public void ConfigureServices(IServiceCollection services)
         {
+            //injects dependencies
             services.AddTransient<IGoodsRepository, EFGoodsRepository>();
             services.AddTransient<IOrderRepository, EFOrderRepository>();
             services.AddTransient<IUserRepository, EFUserRepository>();
 
+            //database context connection
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Local")));
+
+            //authentication configuration
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
              .AddCookie(options => 
                 {

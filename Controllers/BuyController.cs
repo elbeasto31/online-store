@@ -28,10 +28,10 @@ namespace AspExMVC.Controllers
             userRep = userRepos;
         }
 
+        //removes order from user's profile
         [Authorize]
         public async Task<IActionResult> RemoveOrderAsync(int id)
         {
-
             await orderRep.RemoveOrderAsync(id);
             return RedirectToAction("Orders", "Profile");
         }

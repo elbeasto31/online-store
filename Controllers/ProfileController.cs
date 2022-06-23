@@ -37,7 +37,7 @@ namespace AspExMVC.Controllers
             return View(orderRep.GetOrdersFromUser(User.Identity.Name));
         }
 
-
+        //profile info page
         public async Task<IActionResult> IndexAsync()
         {
 
@@ -52,6 +52,7 @@ namespace AspExMVC.Controllers
         }
 
 
+        //edits user's profile
         public async Task<IActionResult> EditAsync()
         {
             return View(await currentUser());
@@ -62,6 +63,7 @@ namespace AspExMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                //checks whether phone field contains only numbers
                 if (model.phone.All(char.IsDigit))
                 {
                     userRep.UpdateUser(model);
